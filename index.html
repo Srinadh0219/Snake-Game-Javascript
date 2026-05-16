@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Snake Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="game-container">
+            <header class="game-header">
+                <div class="score-card">
+                    <span class="label">SCORE</span>
+                    <span id="scoreBox" class="value">0</span>
+                </div>
+                <div class="score-card high-score">
+                    <span class="label">BEST</span>
+                    <span id="hightScoreBox" class="value">0</span>
+                </div>
+            </header>
+
+            <div id="playArea"></div>
+
+            <footer class="game-footer">
+                <div class="action-buttons">
+                    <button id="startBtn" class="btn btn-primary">START GAME</button>
+                    <button id="stopBtn" class="btn btn-secondary">RESET</button>
+                </div>
+                
+                <div class="mobile-controls">
+                    <div class="control-row">
+                        <button id="up" class="control-btn">▲</button>
+                    </div>
+                    <div class="control-row">
+                        <button id="left" class="control-btn">◀</button>
+                        <button id="down" class="control-btn">▼</button>
+                        <button id="right" class="control-btn">▶</button>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
