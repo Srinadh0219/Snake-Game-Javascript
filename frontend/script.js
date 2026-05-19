@@ -58,6 +58,7 @@ function gameEngine(){
             hightScoreVal = score;
             localStorage.setItem("highscore", JSON.stringify(hightScoreVal));
             hightScoreBox.innerHTML = hightScoreVal;
+            saveHighScoreToServer(hightScoreVal);
         }
         scoreBox.innerHTML = score;
 
@@ -89,16 +90,50 @@ function gameEngine(){
     playArea.appendChild(foodElement);
 }
 
+const BACKEND_URL = 'http://localhost:5000/api/highscore';
+
 // High Score Logic
 let hightScore = localStorage.getItem("highscore");
-let hightScoreVal;
-if(hightScore === null){
-    hightScoreVal = 0;
-    localStorage.setItem("highscore", JSON.stringify(hightScoreVal));
-}else{
+let hightScoreVal = 0;
+if(hightScore !== null){
     hightScoreVal = JSON.parse(hightScore);
     hightScoreBox.innerHTML = hightScoreVal;
 }
+
+// Fetch High Score from Backend
+async function fetchHighScore() {
+    try {
+        const response = await fetch(BACKEND_URL);
+        if (response.ok) {
+            const data = await response.json();
+            if (data.highscore > hightScoreVal) {
+                hightScoreVal = data.highscore;
+                localStorage.setItem("highscore", JSON.stringify(hightScoreVal));
+                hightScoreBox.innerHTML = hightScoreVal;
+            }
+        }
+    } catch (error) {
+        console.warn("Backend unavailable, using localStorage for highscore.");
+    }
+}
+
+// Save High Score to Backend
+async function saveHighScoreToServer(score) {
+    try {
+        await fetch(BACKEND_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ score })
+        });
+    } catch (error) {
+        console.warn("Backend unavailable, could not sync highscore to server.");
+    }
+}
+
+// Fetch high score on startup
+fetchHighScore();
 
 window.requestAnimationFrame(main);
 

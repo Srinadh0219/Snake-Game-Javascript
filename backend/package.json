@@ -1,0 +1,21 @@
+{
+  "name": "snake-game-backend",
+  "version": "1.0.0",
+  "description": "Backend API for persisting Snake Game high scores",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "snake",
+    "express",
+    "nodejs",
+    "highscore"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}

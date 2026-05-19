@@ -1,25 +1,66 @@
-# Snake Game with JavaScript
+# 🐍 Full-Stack Snake Game with JavaScript & Express
 
-A classic Snake Game built using **JavaScript**, **HTML**, and **CSS**, featuring **sound effects** for a more engaging gameplay experience.
+Welcome to the **Full-Stack Snake Game**! This repository has been structured as a modern full-stack web application featuring a pure JavaScript game client on the frontend and an Express high scores persistence server on the backend.
 
-## 🎮 Demo
+## 📁 Repository Structure
 
-You can play the game by opening the `index.html` file in your browser.
+```
+Snake-Game-Javascript/
+├── frontend/
+│   ├── index.html        # Game HTML layout
+│   ├── style.css         # Beautiful responsive stylesheet
+│   ├── script.js         # JavaScript game engine and backend score synchronization
+│   ├── image.jpg         # Visual assets
+│   └── *.mp3             # Game sound effects (eating, movement, game over)
+├── backend/
+│   ├── server.js         # Express high score API
+│   ├── package.json      # Backend dependencies
+│   ├── highscores.json   # Local persistent database
+│   └── README.md         # Backend details
+├── .gitignore            # Git ignore rules
+└── README.md             # This project file
+```
 
-## 🐍 Features
+---
 
-- Classic snake gameplay
-- Score tracking
-- Sound effects for:
-  - Eating food
-  - Game over
-  - Movement
-- Responsive design for different screen sizes
-- Easy-to-play controls using keyboard arrow keys
+## 🎮 Features
 
-## 🛠️ Technologies Used
+- **Classic Gameplay**: Keyboard Arrow key controls and full mobile screen tap support.
+- **Sound Design**: Immersive retro game audio for eating food, player movement, and game over sequences.
+- **Full-Stack High Score Persistence**:
+  - Automatically loads the globally recorded high score from the Node.js/Express server on startup.
+  - Dynamically updates and commits high scores to the backend server in real-time when the player beats the current high score.
+  - **Fail-Safe Offline Mode**: Falls back transparently to browser `localStorage` if the backend API server is offline.
 
-- **JavaScript** – Game logic and interactions  
-- **HTML** – Game structure  
-- **CSS** – Styling and layout  
-- **Audio** – Sound effects during gameplay  
+---
+
+## 🚀 Getting Started
+
+To run the application locally:
+
+### 1. Start the Backend API Server
+1. Navigate into the `backend` folder:
+   ```bash
+   cd backend
+   ```
+2. Install the server dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the Express server:
+   ```bash
+   npm start
+   ```
+The server will now be live at `http://localhost:5000`.
+
+### 2. Launch the Frontend Client
+You can open `frontend/index.html` directly in your web browser, or use a local dev server (like VS Code Live Server) to host the frontend. The game client will automatically connect to the backend server running on port `5000` to fetch and record high scores.
+
+---
+
+## 🔌 API Endpoints
+
+The Express backend exposes the following endpoints:
+
+- **`GET /api/highscore`** - Retrieves the current highest score.
+- **`POST /api/highscore`** - Updates the high score if the submitted score is higher (requires JSON request body `{ "score": number }`).
