@@ -2,26 +2,6 @@
 
 Welcome to the **Full-Stack Snake Game**! This repository has been structured as a modern full-stack web application featuring a pure JavaScript game client on the frontend and an Express high scores persistence server on the backend.
 
-## 📁 Repository Structure
-
-```
-Snake-Game-Javascript/
-├── frontend/
-│   ├── index.html        # Game HTML layout
-│   ├── style.css         # Beautiful responsive stylesheet
-│   ├── script.js         # JavaScript game engine and backend score synchronization
-│   ├── image.jpg         # Visual assets
-│   └── *.mp3             # Game sound effects (eating, movement, game over)
-├── backend/
-│   ├── server.js         # Express high score API
-│   ├── package.json      # Backend dependencies
-│   ├── highscores.json   # Local persistent database
-│   └── README.md         # Backend details
-├── .gitignore            # Git ignore rules
-└── README.md             # This project file
-```
-
----
 
 ## 🎮 Features
 
